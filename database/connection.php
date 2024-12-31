@@ -4,15 +4,16 @@
 
 // Database configuration
 $servername = 'localhost';
-$username = 'root';
+$username = "root";
 $password = '';
-$dbname = 'test';
+$dbname = 'situation';
 
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
 
 // Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+try {
+    // Create connection
+    $conn = new PDO("mysql:host={$servername};dbname={$dbname}",$username , $password );
+} catch (PDOException $e){
+    echo "failed to connect";
 }
 ?>
